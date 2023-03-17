@@ -1,12 +1,5 @@
 from selenium.webdriver.common.by import By
 
-class  MainPage(object):
-    """docstring for  MainPage"""
-    def __init__(self, arg):
-        super( MainPage, self).__init__()
-        self.arg = arg
-
-
 def go_to_login_page(browser):
     login_link = browser.find_element(By.CSS_SELECTOR, "#login_link")
     login_link.click()
