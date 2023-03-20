@@ -17,6 +17,10 @@ class BasePage():
 	def open(self):
 		self.browser.get(self.url)
 
+	def fill_out_input_field(self, how, what, keys):
+		self.browser.find_element(how, what).send_keys(keys)
+
+
 	def go_to_login_page(self):
 		link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
 		link.click()
@@ -24,6 +28,10 @@ class BasePage():
 	def got_to_basket_page(self):
 		basket_button = self.browser.find_element(*BasePageLocators.BASKET_BUTTON)
 		basket_button.click()
+
+	def should_be_authorized_user(self):
+		assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                 " probably unauthorised user"
 
 
 	def should_be_login_link(self):
