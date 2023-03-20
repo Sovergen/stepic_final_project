@@ -15,3 +15,9 @@ class ProductPage(BasePage):
 		product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE_ELEMENT).text
 		added_product_price = self.browser.find_element(*ProductPageLocators.ADDED_PRODUCT_PRICE).text
 		assert product_price == added_product_price, f"expected added product price :'{product_price}', but real:'{added_product_price}'"
+
+	def should_not_be_success_message_present(self):
+		assert self.is_not_element_present(*ProductPageLocators.ADDED_PRODUCT_NAME), "success message is showed"
+
+	def should_be_desapired_success_message(self):
+		assert self.is_disappeared(*ProductPageLocators.ADDED_PRODUCT_NAME), f"success message is not desapiered"
